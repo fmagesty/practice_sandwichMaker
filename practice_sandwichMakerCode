@@ -1,0 +1,26 @@
+import pyinputplus as pyip 
+
+# Welcome:
+prompt: 'Welcome. Please select how you want your sandwich.'
+
+# Making the sandwhich:
+bread = pyip.inputMenu(['wheat', 'white', 'sourdough'])
+protein = pyip.inputMenu(['chicken', 'turkey', 'ham', 'tofu'])
+[print('Do you want cheese?')]
+cheese = pyip.inputYesNo()
+if cheese == 'yes':
+    cheeseType = pyip.inputMenu(['cheddar', 'swiss', 'mozzarella'], default='none')
+condiment = pyip.inputMenu(['mayo', 'mustard', 'lettuce', 'tomato'])
+print('How many sandwiches do you want?')
+numberOfsandwiches = pyip.inputInt(min=1)
+
+# Price calculation:
+cost = {
+        'wheat': 1.50, 'white': 1.35, 'sourdough': 1.85,
+        'chicken': 0.9, 'turkey': 0.85, 'ham': 0.5, 'tofu': 1.25,
+        'cheddar': 0.55, 'swiss': 0.7, 'mozzarella': 0.6,
+        'mayo': 0.25, 'mustard':0.15, 'lettuce':0.30, 'tomato': 0.30
+}
+
+total = (cost[bread] + cost[protein] + cost[cheeseType] + cost[condiment]) * numberOfsandwiches
+print(f'The total for your order is: ${total}')
